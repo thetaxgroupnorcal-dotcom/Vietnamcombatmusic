@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vietnamcombatmusic.com/sitemap.xml
