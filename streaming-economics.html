@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Streaming Economics | Vietnam Combat Music</title>
+<meta name="description" content="An interactive, source-linked streaming and social-media revenue estimator for independent artists.">
+<link rel="icon" href="favicon.svg">
+<style>:root{--navy:#061827;--gold:#d5a443;--red:#cb2136;--cream:#f4f0e8;--green:#18b785}*{box-sizing:border-box}body{margin:0;background:var(--navy);color:white;font:16px/1.55 Arial,sans-serif}header{display:flex;justify-content:space-between;align-items:center;padding:20px 6vw;border-bottom:1px solid #314555}.brand{color:white;text-decoration:none;font-weight:900}nav{display:flex;gap:20px;flex-wrap:wrap}nav a{color:white;text-decoration:none;font-weight:700}.hero{padding:clamp(70px,10vw,140px) 7vw 60px}.eyebrow{color:var(--gold);font-weight:900;letter-spacing:.17em;text-transform:uppercase;font-size:.78rem}.hero h1{font-size:clamp(3.2rem,8vw,8rem);line-height:.86;letter-spacing:-.065em;margin:18px 0}.hero p{max-width:900px;color:#c8d3da;font-size:1.25rem}.calc{margin:0 6vw 70px;background:white;color:#111;padding:clamp(28px,5vw,65px);display:grid;grid-template-columns:.8fr 1.2fr;gap:7vw}.calc h2{font-size:clamp(2.3rem,5vw,5rem);line-height:.95;margin:15px 0}.field{margin:18px 0}.field label{display:block;font-weight:800;margin-bottom:7px}.field input,.field select{width:100%;font-size:1.1rem;padding:14px;border:1px solid #9aa3a9}.result{background:var(--red);color:white;padding:35px;display:grid;align-content:center}.result strong{font-size:clamp(3rem,8vw,7rem);line-height:.9}.result span{font-size:1.1rem}.scenarios{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#425260}.scenarios div{background:#102638;padding:35px}.scenarios b{font-size:2rem;color:var(--gold);display:block}.dashboard{padding:80px 6vw;background:var(--cream);color:#101820}.dashboard h2,.spotlight h2{font-size:clamp(2.5rem,6vw,6rem);line-height:.95}.platforms{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{background:white;padding:28px;border-top:5px solid var(--gold)}.card h3{font-size:1.6rem;margin:.2em 0}.card .rate{font-size:1.8rem;font-weight:900}.card a{font-weight:900;color:#9a1627}.card small{display:block;color:#626b71;margin-top:18px}.spotlight{padding:80px 6vw;background:#0d2739}.snapshot,.workout{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.stat,.track{padding:25px;background:#fff;color:#10202b}.stat b{display:block;font-size:2.2rem;color:#a5172b}.track b{display:block;color:#a5172b;font-size:1.25rem}.actions{display:flex;gap:12px;flex-wrap:wrap;margin:28px 0}.actions a{background:var(--gold);color:#07141d;padding:13px 18px;text-decoration:none;font-weight:900}.truth{padding:80px 7vw;display:grid;grid-template-columns:1fr 1fr;gap:8vw}.truth h2{font-size:clamp(2.5rem,6vw,5rem);line-height:.95}.truth li{margin:14px 0}.updated{display:inline-block;padding:8px 12px;border:1px solid #526674;color:#bdc8ce}.source-note{padding:30px 7vw;background:#040d14;color:#9ba8b0;font-size:.84rem}.source-note a{color:white}footer{padding:35px 6vw;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}@media(max-width:800px){.calc,.truth{grid-template-columns:1fr}.scenarios,.platforms,.snapshot,.workout{grid-template-columns:1fr}nav{gap:8px;font-size:.85rem}}</style>
+</head>
+<body>
+<header>
+<a class="brand" href="index.html">VIETNAM COMBAT MUSIC</a>
+<nav>
+<a href="about.html">About</a>
+<a href="membership.html">Membership</a>
+<a href="gallery.html">Gallery</a>
+<a href="events.html">Events</a>
+</nav>
+</header>
+<main>
+<section class="hero">
+<p class="eyebrow">Transparent music economics</p>
+<h1>What does<br>a stream<br>really pay?</h1>
+<p>A source-linked planning dashboard for artists. Adjust the revenue target and actual RPM or per-stream value from your own platform statements. The calculator shows the scale required—it does not promise earnings.</p>
+<span class="updated">Research reviewed July 19, 2026</span>
+</section>
+<section class="calc">
+<div>
+<p class="eyebrow">Interactive estimator</p>
+<h2>Views needed to reach a target</h2>
+<div class="field">
+<label for="platform">Platform model</label>
+<select id="platform" onchange="preset()">
+<option value="rpm">YouTube long-form RPM</option>
+<option value="stream">Music-service per-stream estimate</option>
+</select>
+</div>
+<div class="field">
+<label for="target">Revenue target (USD)</label>
+<input id="target" type="number" min="1" value="85000" oninput="calculate()">
+</div>
+<div class="field">
+<label id="rateLabel" for="rate">Your YouTube RPM (earnings per 1,000 views)</label>
+<input id="rate" type="number" min="0.0001" step="0.0001" value="3.00" oninput="calculate()">
+</div>
+</div>
+<div class="result">
+<span id="answerLabel">Estimated views needed</span>
+<strong id="answer">28.3M</strong>
+<span id="formula">$85,000 ÷ $3 RPM × 1,000</span>
+</div>
+</section>
+<section class="scenarios">
+<div>
+<span>YouTube example · $1 RPM</span>
+<b>85.0M views</b>
+<small>Low-RPM planning scenario</small>
+</div>
+<div>
+<span>YouTube example · $3 RPM</span>
+<b>28.3M views</b>
+<small>Middle planning scenario</small>
+</div>
+<div>
+<span>YouTube example · $8 RPM</span>
+<b>10.6M views</b>
+<small>Higher-RPM planning scenario</small>
+</div>
+</section>
+<section class="dashboard">
+<p class="eyebrow">Who pays what—and how</p>
+<h2>Platform reality, not payout mythology.</h2>
+<div class="platforms">
+<article class="card">
+<h3>YouTube</h3>
+<p class="rate">Use your channel RPM</p>
+<p>YouTube defines RPM as actual revenue earned per 1,000 views after revenue share. It can include ads, Premium, memberships, Super Chat and other sources. The platform guarantees no fixed amount.</p>
+<a href="https://support.google.com/youtube/answer/9314357">Official RPM explanation ↗</a>
+<small>Best source for your real rate: YouTube Studio → Analytics → Revenue.</small>
+</article>
+<article class="card">
+<h3>Spotify</h3>
+<p class="rate">No fixed per-stream rate</p>
+<p>Spotify states that royalties are calculated by streamshare, not a fixed payment for each play. Approximately two-thirds of music revenue is allocated to recording and publishing royalties before rights-holder agreements determine what reaches an artist.</p>
+<a href="https://artists.spotify.com/royalties-guide">Official royalties guide ↗</a>
+<small>Best source for your real receipts: distributor royalty statements.</small>
+</article>
+<article class="card">
+<h3>Apple Music</h3>
+<p class="rate">Historical benchmark: $0.01</p>
+<p>Apple reported an average of $0.01 per play for individual paid plans in 2020, including label and publisher royalties. Apple notes that value varies by plan and country; this is not a current guarantee or artist net payment.</p>
+<a href="https://artists.apple.com/support/1124-apple-music-insights-royalty-rate">Official Apple explanation ↗</a>
+<small>Best source for current money received: distributor statements.</small>
+</article>
+</div>
+</section>
+<section class="spotlight">
+<p class="eyebrow">Vietnam Combat Music on Spotify</p>
+<h2>A public snapshot—with the private numbers kept honest.</h2>
+<div class="snapshot">
+<div class="stat"><b>11</b>tracks on the 2025 album</div>
+<div class="stat"><b>32 min</b>official album runtime</div>
+<div class="stat"><b>25</b>stores and platforms shown in the supplied DistroKid release dashboard</div>
+<div class="stat"><b>Private</b>stream, listener and royalty totals require Spotify for Artists or distributor access</div>
+</div>
+<div class="actions"><a href="https://open.spotify.com/album/73Euy6fLqakpdciMJuquxc" target="_blank" rel="noreferrer">Open the album on Spotify ↗</a><a href="https://www.youtube.com/@VietnamCombatMusic" target="_blank" rel="noreferrer">Watch on YouTube ↗</a></div>
+<p class="eyebrow">Nelden workout set</p>
+<div class="workout">
+<div class="track"><b>1 · New Day</b>Warm-up and establish pace</div>
+<div class="track"><b>2 · 50 Gunner</b>Strength block</div>
+<div class="track"><b>3 · Two Clicks Off</b>Interval push</div>
+<div class="track"><b>4 · The Flamethrower</b>Final effort and finish</div>
+</div>
+<p>This four-song editorial sequence is selected for narrative energy and momentum—not as medical or exercise advice.</p>
+</section>
+<section class="truth">
+<div>
+<p class="eyebrow">The number that matters</p>
+<h2>Gross platform royalties are not artist take-home income.</h2>
+</div>
+<div>
+<ul>
+<li>Recording and publishing royalties are different revenue streams.</li>
+<li>Distributors, labels, collaborators, publishers and collection societies may receive different shares.</li>
+<li>Country, listener plan, advertising demand, content type and monetized-view percentage change outcomes.</li>
+<li>YouTube Shorts and long-form videos use different revenue systems.</li>
+<li>Artificial streaming can trigger withholding, penalties or removal. Sustainable audiences matter more than manufactured counts.</li>
+</ul>
+</div>
+</section>
+<section class="source-note">Sources: <a href="https://support.google.com/youtube/answer/9314357">YouTube Help—RPM</a> · <a href="https://support.google.com/youtube/answer/72902">YouTube Partner earnings</a> · <a href="https://artists.spotify.com/royalties-guide">Spotify for Artists royalties guide</a> · <a href="https://artists.apple.com/support/1124-apple-music-insights-royalty-rate">Apple Music royalty insight</a>. “Live” means these links lead to the platforms’ maintained explanations; displayed scenario numbers are transparent calculations, not live confidential account data.</section>
+</main>
+<footer>
+<strong>Vietnam Combat Music Arts &amp; History Corporation</strong>
+<a href="membership.html">Artist membership</a>
+<a href="index.html">Home</a>
+</footer>
+<script>const n=new Intl.NumberFormat('en-US',{maximumFractionDigits:1});function compact(v){if(v>=1e9)return n.format(v/1e9)+'B';if(v>=1e6)return n.format(v/1e6)+'M';if(v>=1e3)return n.format(v/1e3)+'K';return n.format(v)}function preset(){const p=document.getElementById('platform').value,r=document.getElementById('rate'),l=document.getElementById('rateLabel');if(p==='rpm'){r.value='3.00';l.textContent='Your YouTube RPM (earnings per 1,000 views)'}else{r.value='0.0035';l.textContent='Planning estimate per music stream (USD)'}calculate()}function calculate(){const p=document.getElementById('platform').value,t=Math.max(0,Number(document.getElementById('target').value)),r=Math.max(.000001,Number(document.getElementById('rate').value));const count=p==='rpm'?t/r*1000:t/r;document.getElementById('answer').textContent=compact(count);document.getElementById('answerLabel').textContent=p==='rpm'?'Estimated views needed':'Estimated streams needed';document.getElementById('formula').textContent=p==='rpm'?`$${n.format(t)} ÷ $${r} RPM × 1,000`:`$${n.format(t)} ÷ $${r} per stream`}calculate()</script>
+</body>
+</html>
